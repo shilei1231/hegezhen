@@ -12,9 +12,9 @@ export default defineConfig({
     proxy: {
       // API代理配置 - 统一代理所有/api请求到目标域名
       '/api': {
-        //target: 'http://10.189.88.109:8000',
+        target: 'http://10.189.88.109:8000',
         //target: 'http://10.189.88.111:8000',
-        target: 'http://10.189.88.11:8000',
+        //target: 'http://10.189.88.11:8000',
         changeOrigin: true,
         // 不重写路径，保持完整路径发送到服务器
         // rewrite: (path) => path.replace(/^\/api/, '')
