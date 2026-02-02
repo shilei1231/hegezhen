@@ -15,7 +15,7 @@
             </div>
           </td>
           <td class="value-cell" colspan="12" :style="getCellStyle(1.58)">
-            <div class="cell-content_text-top-align">{{ cert.CERTIFICATE_NO }}</div>
+            <div class="cell-content"><div class="english-text">{{ cert.CERTIFICATE_NO }}</div></div>
           </td>
         </tr>
 
@@ -42,7 +42,7 @@
             </div>
           </td>
           <td class="value-cell" colspan="18" :style="getCellStyle(1.58)">
-            <div class="cell-content_text-top-align">{{ cert.PRODUCT_MODEL}}</div>
+            <div class="cell-content"><div class="english-text">{{ cert.PRODUCT_MODEL}}</div></div>
           </td>
         </tr>
 
@@ -54,7 +54,7 @@
             </div>
           </td>
           <td class="value-cell" colspan="18" :style="getCellStyle(1.58)">
-            <div class="cell-content_text-top-align">{{ cert.PIN }}</div>
+            <div class="cell-content"><div class="english-text">{{ cert.PIN }}</div></div>
           </td>
         </tr>
 
@@ -319,10 +319,12 @@ const getMultipleCertificateDetails = async (ids) => {
 
 };
 
-const getCellStyle = (height = 64) => {
+const getCellStyle = (heightCm = 1.58) => {
+  // 直接使用厘米单位，同时设置height、minHeight和maxHeight确保行高完全固定
   return {
-    height: `${height}px`,
-    minHeight: `${height}px`
+    height: `${heightCm}cm`,
+    minHeight: `${heightCm}cm`,
+    maxHeight: `${heightCm}cm`
   }
 }
 
@@ -410,6 +412,7 @@ onMounted(async () => {
 }
 
 .certificate-container {
+  /* 证书容器 - 占满整个宽度，使用flex布局垂直居中 */
   width: 100%;
   min-height: 100%;
   box-sizing: border-box;
@@ -419,169 +422,180 @@ onMounted(async () => {
 }
 
 .certificate-wrapper {
-  page-break-after: always;
+  /* 证书包装容器 - 设置A4纸标准尺寸(21cm×29.7cm)，确保每页打印一个证书 */
+  page-break-after: always; /* 强制分页，每个证书单独一页 */
   width: 100%;
-  max-width: 21cm;
-  min-height: 29.7cm;
+  max-width: 21cm; /* A4纸宽度 */
+  min-height: 29.7cm; /* A4纸高度 */
   margin-bottom: 3cm;
   box-sizing: border-box;
   position: relative;
 }
 
 @media print {
+  /* 打印样式 - 调整证书在打印时的尺寸和边距 */
   .certificate-wrapper {
-    width: calc(21cm - 40mm) !important;
+    width: calc(21cm - 40mm) !important; /* 打印时宽度减去左右边距(各20mm) */
     max-width: calc(21cm - 40mm) !important;
-    margin: 24.7mm auto 10mm !important;
-    min-height: auto !important;
-    page-break-after: always !important;
+    margin: 24.7mm auto 10mm !important; /* 顶部边距24.7mm，底部边距10mm，左右居中 */
+    min-height: auto !important; /* 打印时自动适应内容高度 */
+    page-break-after: always !important; /* 强制分页 */
   }
 }
 
 .certificate-table {
-  width: 17cm;
-  height: 26.3cm;
-  border-collapse: collapse;
-  table-layout: fixed;
+  /* 证书表格 - 设置固定宽度和高度，使用固定布局 */
+  width: 17cm; /* 表格宽度 */
+  height: 26.3cm; /* 表格总高度 */
+  border-collapse: collapse; /* 合并边框 */
+  table-layout: fixed; /* 使用固定布局，确保列宽一致 */
 }
 
 .certificate-table td {
-  border: 0.18mm solid #000000;
-  background-color: transparent;
-  vertical-align: middle;
-  text-align: center;
-  padding: 0;
-  overflow: hidden;
-  font-size: 12pt;
-  line-height: 1.0;
-  height: auto;
+  /* 证书表格单元格 - 定义所有单元格的基本样式 */
+  border: 0.18mm solid #000000; /* 0.18mm宽的黑色边框 */
+  background-color: transparent; /* 透明背景 */
+  vertical-align: middle; /* 垂直居中对齐 */
+  text-align: center; /* 水平居中对齐 */
+  padding: 0; /* 清除默认内边距 */
+  overflow: hidden !important; /* 隐藏溢出内容，确保不影响行高 */
+  font-size: 12pt; /* 字体大小12pt */
+  line-height: 1.0; /* 行高1.0 */
+  box-sizing: border-box; /* 确保边框和内边距不影响高度 */
 }
 
 .label-cell {
-  font-family: 'SimSun', '宋体', serif;
+  /* 标签单元格 - 定义标签列的字体 */
+  font-family: 'SimSun', '宋体', serif; /* 使用宋体字体 */
 }
 
 .value-cell {
-  font-family: 'SimSun', '宋体', serif;
+  /* 值单元格 - 定义值列的字体 */
+  font-family: 'SimSun', '宋体', serif; /* 使用宋体字体 */
 }
 
 .inspection-cell {
-  font-family: 'SimSun', '宋体', serif;
+  /* 检验结论单元格 - 定义检验结论列的字体 */
+  font-family: 'SimSun', '宋体', serif; /* 使用宋体字体 */
 }
 
 .inspection-cell .chinese-text {
-  font-size: 12pt;
-  font-family: 'SimSun', '宋体', serif;
-  line-height: 1.0;
+  /* 检验结论单元格中的中文文本 - 设置字体大小、字体和行高 */
+  font-size: 12pt; /* 字体大小12pt */
+  font-family: 'SimSun', '宋体', serif; /* 使用宋体字体 */
+  line-height: 1.0; /* 行高1.0 */
 }
 
 .manufacturer-address-label .chinese-text {
-  font-size: 12pt;
-  font-family: 'SimSun', '宋体', serif;
+  /* 生产单位地址标签中的中文文本 - 设置字体大小和字体 */
+  font-size: 12pt; /* 字体大小12pt */
+  font-family: 'SimSun', '宋体', serif; /* 使用宋体字体 */
 }
 
 .manufacturer-address-value .chinese-text {
-  font-size: 18pt;
-  font-family: 'SimSun', '宋体', serif;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+  /* 生产单位地址值中的中文文本 - 设置较大字号和居中对齐 */
+  font-size: 18pt; /* 字体大小18pt，比普通文本大 */
+  font-family: 'SimSun', '宋体', serif; /* 使用宋体字体 */
+  justify-content: center; /* flex布局水平居中 */
+  align-items: center; /* flex布局垂直居中 */
+  text-align: center; /* 文本水平居中 */
 }
 
 .manufacturer-address-value .english-text {
-  font-family: 'Times New Roman', serif;
-  font-size: 12pt;
-  line-height: 1.0;
-  margin: 0.15cm 0 0 0;
-  color: #000;
-  text-align: center;
+  /* 生产单位地址值中的英文文本 - 设置字体、字号和间距 */
+  font-family: 'Times New Roman', serif; /* 使用Times New Roman字体 */
+  font-size: 12pt; /* 字体大小12pt */
+  line-height: 1.0; /* 行高1.0 */
+  margin: 0.15cm 0 0 0; /* 顶部外边距0.15cm，与中文文本保持间距 */
+  color: #000; /* 黑色文本 */
+  text-align: center; /* 文本水平居中 */
 }
 
 .cell-content {
-  padding: 0.2cm 0.3cm;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: left;
-  text-align: left;
+  /* 单元格内容 - 定义单元格内部内容的布局 */
+  padding: 0.2cm 0.3cm; /* 上下内边距0.2cm，左右内边距0.3cm */
+  height: 100%; /* 高度占满整个单元格 */
+  display: flex; /* 使用flex布局 */
+  flex-direction: column; /* 垂直方向排列 */
+  justify-content: center; /* 垂直居中对齐 */
+  align-items: left; /* 水平左对齐 */
+  text-align: left; /* 文本左对齐 */
+  overflow: hidden !important; /* 隐藏溢出内容，确保不影响行高 */
+  white-space: normal; /* 允许文本换行，但保持在固定高度内 */
 }
 .cell-content_text-top-align{
-  padding: 0.2cm 0.3cm;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: left;
-  text-align: left;
-  /* 顶部对齐 */
-  padding-top: -1cm !important; /* 减少顶部内边距 */
-  white-space: pre-line !important; /* 保留换行符 */
-  overflow: hidden !important;
-  height: 1.58cm !important;
-  max-height: 1.58cm !important;
+  /* 顶部对齐的单元格内容 - 适用于单行文本，设置最小/最大高度 */
+  padding: 0cm 0.3cm; /* 上下内边距0.2cm，左右内边距0.3cm */
+  display: flex; /* 使用flex布局 */
+  flex-direction: column; /* 垂直方向排列 */
+  justify-content: center; /* 垂直居中对齐 */
+  align-items: left; /* 水平左对齐 */
+  text-align: left; /* 文本左对齐 */
+
+  min-height: 1.58cm !important; /* 最小高度1.58cm */
+  max-height: 1.58cm !important; /* 最大高度1.58cm */
 }
 
 .multi-line {
-  justify-content: center;
-  align-items: left;
-  text-align: left;
+  /* 多行文本 - 定义多行文本内容的布局 */
+  padding: 0.2cm 0.3cm; /* 上下内边距0.2cm，左右内边距0.3cm */
+  height: 100%; /* 高度占满整个单元格 */
+  display: flex; /* 使用flex布局 */
+  flex-direction: column; /* 垂直方向排列 */
+  overflow: hidden !important; /* 隐藏溢出内容，确保不影响行高 */
+  justify-content: center; /* 垂直居中对齐 */
+  align-items: left; /* 水平左对齐 */
+  text-align: left; /* 文本左对齐 */
+  white-space: pre-line !important; /* 保留换行符，支持多行显示 */
 }
 
 .chinese-text {
-  font-family: 'SimSun', '宋体', serif;
-  font-size: 12pt;
-  line-height: 1.0;
-  margin: 0;
-  color: #000;
-  text-align: left;
-  padding: 0;
-  position: relative;
-  top: -8px; /* 控制中文向上移动的距离 */
+  /* 中文文本 - 定义中文文本的基本样式 */
+  font-family: 'SimSun', '宋体', serif; /* 使用宋体字体 */
+  font-size: 12pt; /* 字体大小12pt */
+  line-height: 1.0; /* 行高1.0 */
+  margin: 0; /* 清除默认外边距 */
+  color: #000; /* 黑色文本 */
+  text-align: left; /* 文本左对齐 */
+  padding: 0; /* 清除默认内边距 */
   white-space: pre-line !important; /* 保留换行符 */
 }
 .chinese-text1 {
-  font-family: 'SimSun', '宋体', serif;
-  font-size: 12pt;
-  line-height: 1.0;
-  margin: 0;
-  color: #000;
-  text-align: left;
-  padding: 0;
-  position: relative;
-  top: -8px; /* 控制中文向上移动的距离 */
+  /* 中文文本1 - 定义备注等多行文本的样式 */
+  font-family: 'SimSun', '宋体', serif; /* 使用宋体字体 */
+  font-size: 12pt; /* 字体大小12pt */
+  line-height: 1.2; /* 行高1.2，提高可读性 */
+  margin: 0; /* 清除默认外边距 */
+  color: #000; /* 黑色文本 */
+  text-align: left; /* 文本左对齐 */
+  padding: 0; /* 清除默认内边距 */
   white-space: pre-line !important; /* 保留换行符 */
-  overflow: hidden !important;
-  height: 2.37cm !important;
-  max-height: 2.37cm !important;
-
+  overflow: hidden !important; /* 隐藏溢出内容 */
+  min-height: 2.37cm !important; /* 最小高度2.37cm */
+  max-height: 2.37cm !important; /* 最大高度2.37cm */
 }
 .chinese-text2 {
-  font-family: 'SimSun', '宋体', serif;
-  font-size: 12pt;
-  line-height: 1.0;
-  margin: 0;
-  color: #000;
-  text-align: left;
-  padding: 0;
-  position: relative;
-  top: -8px; /* 控制中文向上移动的距离 */
+  /* 中文文本2 - 定义发动机编号等特定字段的样式 */
+  font-family: 'SimSun', '宋体', serif; /* 使用宋体字体 */
+  font-size: 12pt; /* 字体大小12pt */
+  line-height: 1.0; /* 行高1.0 */
+  margin: 0; /* 清除默认外边距 */
+  color: #000; /* 黑色文本 */
+  text-align: left; /* 文本左对齐 */
+  padding: 0; /* 清除默认内边距 */
   white-space: pre-line !important; /* 保留换行符 */
-  overflow: hidden !important;
-  height: 1.58cm !important;
-  max-height: 1.58cm !important;
-
+  overflow: hidden; /* 隐藏溢出内容 */
 }
 .english-text {
-  font-family: 'Times New Roman', serif;
-  font-size: 12pt;
-  line-height: 1.0;
-  margin: 0;
-  color: #000;
-  text-align: left;
-  padding: 0;
-  position: relative;
-  top: -5px; /* 控制英文向上移动的距离 */
-  white-space: pre-line !important; /* 保留换行符 */
+  /* 英文文本 - 定义英文文本的基本样式 */
+  font-family: 'Times New Roman', serif; /* 使用Times New Roman字体 */
+  font-size: 12pt; /* 字体大小12pt */
+  line-height: 1.0; /* 行高1.0 */
+  margin: 0; /* 清除默认外边距 */
+  color: #000; /* 黑色文本 */
+  text-align: left; /* 文本左对齐 */
+  padding: 0; /* 清除默认内边距 */
+  white-space: pre-line; /* 保留换行符 */
 }
 
 @media print {

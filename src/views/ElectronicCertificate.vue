@@ -11,26 +11,26 @@
     <div class="certificate-wrapper">
       <table class="certificate-table" v-if="certificateData">
         <tbody>
-        <tr>
-          <td class="label-cell" colspan="12" :style="getCellStyle(1.58)">
+        <tr :style="getCellStyle(1.58)">
+          <td class="label-cell" colspan="12">
             <div class="cell-content">
               <div class="chinese-text">合格证编号</div>
               <div class="english-text">Certificate No.</div>
             </div>
           </td>
-          <td class="value-cell" colspan="12" :style="getCellStyle(1.58)">
+          <td class="value-cell" colspan="12">
             <div class="cell-content_text-top-align">{{ certificateData.CERTIFICATE_NO }}</div>
           </td>
         </tr>
 
-        <tr>
-          <td class="label-cell" colspan="6" :style="getCellStyle(1.58)">
+        <tr :style="getCellStyle(1.58)">
+          <td class="label-cell" colspan="6">
             <div class="cell-content">
               <div class="chinese-text">产品名称</div>
               <div class="english-text">Product Name</div>
             </div>
           </td>
-          <td class="value-cell" colspan="18" :style="getCellStyle(1.58)">
+          <td class="value-cell" colspan="18">
             <div class="cell-content multi-line">
               <div class="chinese-text">{{ certificateData.PRODUCT_NAME}}</div>
               <div class="english-text">{{ certificateData.PRODUCT_NAME_U}}</div>
@@ -38,55 +38,55 @@
           </td>
         </tr>
 
-        <tr>
-          <td class="label-cell" colspan="6" :style="getCellStyle(1.58)">
+        <tr :style="getCellStyle(1.58)">
+          <td class="label-cell" colspan="6">
             <div class="cell-content">
               <div class="chinese-text">产品型号</div>
               <div class="english-text">Product Model</div>
             </div>
           </td>
-          <td class="value-cell" colspan="18" :style="getCellStyle(1.58)">
+          <td class="value-cell" colspan="18">
             <div class="cell-content_text-top-align">{{ certificateData.PRODUCT_MODEL}}</div>
           </td>
         </tr>
 
-        <tr>
-          <td class="label-cell" colspan="6" :style="getCellStyle(1.58)">
+        <tr :style="getCellStyle(1.58)">
+          <td class="label-cell" colspan="6">
             <div class="cell-content">
               <div class="chinese-text">产品识别代码</div>
               <div class="english-text">PIN.</div>
             </div>
           </td>
-          <td class="value-cell" colspan="18" :style="getCellStyle(1.58)">
+          <td class="value-cell" colspan="18">
             <div class="cell-content_text-top-align">{{ certificateData.PIN }}</div>
           </td>
         </tr>
 
-        <tr>
-          <td class="label-cell" colspan="6" :style="getCellStyle(1.58)">
+        <tr :style="getCellStyle(1.58)">
+          <td class="label-cell" colspan="6">
             <div class="cell-content multi-line">
               <div class="chinese-text">发动机编号&nbsp;&nbsp;&nbsp;</div>
               <div class="english-text">Engine No.</div>
             </div>
           </td>
-          <td class="value-cell" colspan="6" :style="getCellStyle(1.58)">
+          <td class="value-cell" colspan="6">
             <div class="cell-content multi-line">
             <div class="chinese-text2">{{ certificateData.ENGINE_NO}}</div></div>
           </td>
-          <td class="label-cell" colspan="6" :style="getCellStyle(1.58)">
+          <td class="label-cell" colspan="6">
             <div class="cell-content multi-line">
               <div class="chinese-text">底盘编号</div>
               <div class="english-text">Chassis No.</div>
             </div>
           </td>
-          <td class="value-cell" colspan="6" :style="getCellStyle(1.58)">
+          <td class="value-cell" colspan="6">
             <div class="cell-content multi-line">
             <div class="chinese-text2">{{ certificateData.CHASSIS_NO}}</div></div>
           </td>
         </tr>
 
-        <tr>
-          <td class="inspection-cell" colspan="24" :style="getCellStyle(2.37)">
+        <tr :style="getCellStyle(1.58)">
+          <td class="inspection-cell" colspan="24">
             <div class="cell-content">
               <div class="chinese-text">
                 经检验，本产品符合 {{ certificateData.INSPECTION_CERTIFICATION }} 规定，确认合格，准予出厂。
@@ -99,14 +99,14 @@
           </td>
         </tr>
 
-        <tr>
-          <td class="label-cell" colspan="6" :style="getCellStyle(1.58)">
+        <tr :style="getCellStyle(1.58)">
+          <td class="label-cell" colspan="6">
             <div class="cell-content">
               <div class="chinese-text">出厂日期</div>
               <div class="english-text">Delivery Date</div>
             </div>
           </td>
-          <td class="value-cell" colspan="18" :style="getCellStyle(1.58)">
+          <td class="value-cell" colspan="18">
             <div class="cell-content multi-line">
               <div class="chinese-text">{{ formatDateCN(certificateData.DELIVERY_DATE) }}</div>
               <div class="english-text">{{ certificateData.DELIVERY_DATE_U }}</div>
@@ -114,48 +114,48 @@
           </td>
         </tr>
 
-        <tr>
-          <td class="label-cell" colspan="6" :style="getCellStyle(2.37)">
+        <tr :style="getCellStyle(2.37)">
+          <td class="label-cell" colspan="6">
             <div class="cell-content">
               <div class="chinese-text">检验员</div>
               <div class="english-text">Inspector</div>
             </div>
           </td>
-          <td class="value-cell" colspan="6" :style="getCellStyle(2.37)">
+          <td class="value-cell" colspan="6">
             <div class="cell-content">&nbsp;</div>
           </td>
-          <td class="label-cell" colspan="7" :style="getCellStyle(2.37)">
+          <td class="label-cell" colspan="7">
             <div class="cell-content">
               <div class="chinese-text">质检机构负责人</div>
               <div class="english-text">Quality Inspection</div>
               <div class="english-text">Manager</div>
             </div>
           </td>
-          <td class="value-cell" colspan="5" :style="getCellStyle(2.37)">
+          <td class="value-cell" colspan="5">
             <div class="cell-content">&nbsp;</div>
           </td>
         </tr>
 
-        <tr>
-          <td class="label-cell" colspan="12" :style="getCellStyle(1.58)">
+        <tr :style="getCellStyle(1.58)">
+          <td class="label-cell" colspan="12">
             <div class="cell-content">
               <div class="chinese-text">制造许可证编号</div>
               <div class="english-text">Manufacture License No.</div>
             </div>
           </td>
-          <td class="value-cell" colspan="12" :style="getCellStyle(1.58)">
+          <td class="value-cell" colspan="12">
             <div class="cell-content_text-top-align">{{ certificateData.MANUFACTURE_LICENSE_NO || '────────' }}</div>
           </td>
         </tr>
 
-        <tr>
-          <td class="label-cell" colspan="12" :style="getCellStyle(1.58)">
+        <tr :style="getCellStyle(1.58)">
+          <td class="label-cell" colspan="12">
             <div class="cell-content">
               <div class="chinese-text">制造许可证有效期</div>
               <div class="english-text">Manufacture License Expiry Date</div>
             </div>
           </td>
-          <td class="value-cell" colspan="12" :style="getCellStyle(1.58)">
+          <td class="value-cell" colspan="12">
             <div class="cell-content multi-line">
               <template v-if="certificateData.MANUFACTURE_LICENSE_EXPIRY_DATE">
                 <div class="chinese-text">{{ formatDateCN(certificateData.MANUFACTURE_LICENSE_EXPIRY_DATE) }}</div>
@@ -168,15 +168,15 @@
           </td>
         </tr>
 
-        <tr>
-          <td class="label-cell" colspan="6" :style="getCellStyle(2.37)">
+        <tr :style="getCellStyle(2.37)">
+          <td class="label-cell" colspan="6">
             <div class="cell-content">
               <div class="chinese-text">生产单位名称</div>
               <div class="english-text">Manufacturer</div>
               <div class="english-text">Name</div>
             </div>
           </td>
-          <td class="value-cell manufacturer-address-value" colspan="18" :style="getCellStyle(2.37)">
+          <td class="value-cell manufacturer-address-value" colspan="18">
             <div class="cell-content multi-line">
               <div class="chinese-text">{{ certificateData.MANUFACTURER_NAME }}</div>
               <div class="english-text">{{ certificateData.MANUFACTURER_NAME_U}}</div>
@@ -184,15 +184,15 @@
           </td>
         </tr>
 
-        <tr>
-          <td class="label-cell manufacturer-address-label" colspan="6" :style="getCellStyle(2.37)">
+        <tr :style="getCellStyle(2.37)">
+          <td class="label-cell manufacturer-address-label" colspan="6">
             <div class="cell-content">
               <div class="chinese-text">生产单位地址</div>
               <div class="english-text">Manufacturer</div>
               <div class="english-text">Address</div>
             </div>
           </td>
-          <td class="value-cell" colspan="18" :style="getCellStyle(2.37)">
+          <td class="value-cell" colspan="18">
             <div class="cell-content multi-line">
               <div class="chinese-text">{{ certificateData.MANUFACTURER_ADDRESS}}</div>
               <div class="english-text">{{ certificateData.MANUFACTURER_ADDRESS_U}}</div>
@@ -200,44 +200,44 @@
           </td>
         </tr>
 
-        <tr>
-          <td class="label-cell" colspan="3" :style="getCellStyle(1.58)">
+        <tr :style="getCellStyle(1.58)">
+          <td class="label-cell" colspan="3">
             <div class="cell-content">
               <div class="chinese-text">电话</div>
               <div class="english-text">Tel</div>
             </div>
           </td>
-          <td class="value-cell" colspan="5" :style="getCellStyle(1.58)">
+          <td class="value-cell" colspan="5">
             <div class="cell-content_text-top-align">{{ certificateData.TEL || '─────' }}</div>
           </td>
-          <td class="label-cell" colspan="3" :style="getCellStyle(1.58)">
+          <td class="label-cell" colspan="3">
             <div class="cell-content">
               <div class="chinese-text">传真</div>
               <div class="english-text">Fax</div>
             </div>
           </td>
-          <td class="value-cell" colspan="5" :style="getCellStyle(1.58)">
+          <td class="value-cell" colspan="5">
             <div class="cell-content_text-top-align">{{ certificateData.FAX || '─────' }}</div>
           </td>
-          <td class="label-cell" colspan="4" :style="getCellStyle(1.58)">
+          <td class="label-cell" colspan="4">
             <div class="cell-content">
               <div class="chinese-text">邮编</div>
               <div class="english-text">Zip Code</div>
             </div>
           </td>
-          <td class="value-cell" colspan="4" :style="getCellStyle(1.58)">
+          <td class="value-cell" colspan="4">
             <div class="cell-content_text-top-align">{{ certificateData.ZIP_CODE || '─────' }}</div>
           </td>
         </tr>
 
-        <tr>
-          <td class="label-cell" colspan="3" :style="getCellStyle(2.37)">
+        <tr :style="getCellStyle(2.37)">
+          <td class="label-cell" colspan="3">
             <div class="cell-content multi-line">
               <div class="chinese-text">备注</div>
               <div class="english-text">Remark</div>
             </div>
           </td>
-          <td class="value-cell" colspan="21" :style="getCellStyle(2.37)">
+          <td class="value-cell" colspan="21">
             <div class="cell-content multi-line">
               <div class="chinese-text1">{{ certificateData.REMARK}}</div>
             </div>
@@ -308,10 +308,10 @@ const getCertificateDetail = async (id) => {
 
 
 
-const getCellStyle = (height = 64) => {
+const getCellStyle = (heightCm = 2.0) => {
   return {
-    height: `${height}px`,
-    minHeight: `${height}px`
+    height: `${heightCm}cm`,
+    minHeight: `${heightCm}cm`
   }
 }
 
@@ -343,7 +343,7 @@ const printCertificate = async () => {
       console.error('更新打印状态失败:', error);
     }
   }
-  
+
   // 生成在线PDF预览图片并下载
   // setTimeout(() => {
   //   try {
@@ -443,261 +443,285 @@ onMounted(async () => {
 
 
 .certificate-container {
-  width: 100%;
-  min-height: 100%;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-left: 50px; 
+  /* 证书容器 - 占满整个宽度，使用flex布局垂直居中 */
+  width: 100%; /* 宽度100% */
+  min-height: 100%; /* 最小高度100% */
+  box-sizing: border-box; /* 盒模型设置为border-box */
+  display: flex; /* 使用flex布局 */
+  flex-direction: column; /* 垂直方向排列 */
+  align-items: center; /* 水平居中对齐 */
+  margin-left: 50px; /* 左侧外边距50px */
 }
 
 .certificate-wrapper {
-  page-break-after: always;
-  width: 100%;
-  max-width: 21cm;
-  min-height: 29.7cm;
-  margin-bottom: 3cm;
-  box-sizing: border-box;
-  position: relative;
-  
+  /* 证书包装容器 - 设置A4纸标准尺寸(21cm×29.7cm)，确保每页打印一个证书 */
+  page-break-after: always; /* 强制分页，每个证书单独一页 */
+  width: 100%; /* 宽度100% */
+  max-width: 21cm; /* A4纸宽度 */
+  min-height: 29.7cm; /* A4纸高度 */
+  margin-bottom: 3cm; /* 底部外边距3cm */
+  box-sizing: border-box; /* 盒模型设置为border-box */
+  position: relative; /* 相对定位 */
 }
 
 .image-page {
-  width: 100%;
-  height: 100%;
-  min-height: 29.7cm;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  /* 图片页面 - 定义图片页面的布局 */
+  width: 100%; /* 宽度100% */
+  height: 100%; /* 高度100% */
+  min-height: 29.7cm; /* 最小高度29.7cm（A4纸高度） */
+  display: flex; /* 使用flex布局 */
+  align-items: center; /* 垂直居中对齐 */
+  justify-content: center; /* 水平居中对齐 */
 }
 
 .certificate-image {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
+  /* 证书图片 - 定义证书图片的样式 */
+  max-width: 100%; /* 最大宽度100% */
+  max-height: 100%; /* 最大高度100% */
+  object-fit: contain; /* 保持图片比例，完全显示在容器内 */
 }
 
 @media print {
+  /* 打印样式 - 调整证书在打印时的尺寸和边距 */
   .certificate-wrapper {
-    width: calc(21cm - 40mm) !important;
-    max-width: calc(21cm - 40mm) !important;
-    margin: 24.7mm auto 10mm !important;
-    min-height: auto !important;
-    page-break-after: always !important;
+    width: calc(21cm - 40mm) !important; /* 打印时宽度减去左右边距(各20mm) */
+    max-width: calc(21cm - 40mm) !important; /* 最大宽度限制 */
+    margin: 24.7mm auto 10mm !important; /* 顶部边距24.7mm，底部边距10mm，左右居中 */
+    min-height: auto !important; /* 打印时自动适应内容高度 */
+    page-break-after: always !important; /* 强制分页 */
   }
 }
 
 .certificate-table {
-  width: 17cm;
-  height: 26.3cm;
-  border-collapse: collapse;
-  table-layout: fixed;
-  margin-left: 50px; 
+  /* 证书表格 - 定义证书主体表格的样式 */
+  width: 17cm; /* 表格宽度17cm */
+  height: 26.3cm; /* 表格高度26.3cm */
+  border-collapse: collapse; /* 边框合并 */
+  table-layout: fixed; /* 固定列宽布局 */
+  margin-left: 50px; /* 左侧外边距50px */
 }
 
 .certificate-table td {
-  border: 0.18mm solid #000000;
-  background-color: transparent;
-  vertical-align: middle;
-  text-align: center;
-  padding: 0;
-  overflow: hidden;
-  font-size: 12pt;
-  line-height: 1.0;
-  height: auto;
+  /* 证书表格单元格 - 定义所有单元格的基本样式 */
+  border: 0.18mm solid #000000; /* 边框0.18mm，黑色 */
+  background-color: transparent; /* 背景透明 */
+  vertical-align: middle; /* 垂直居中对齐 */
+  text-align: center; /* 文本居中对齐 */
+  padding: 0; /* 清除默认内边距 */
+  overflow: hidden; /* 隐藏溢出内容 */
+  font-size: 12pt; /* 字体大小12pt */
+  line-height: 1.0; /* 行高1.0 */
+  height: auto; /* 高度自适应 */
 }
 
 .label-cell {
-  font-family: 'SimSun', '宋体', serif;
+  /* 标签单元格 - 定义标签单元格的字体 */
+  font-family: 'SimSun', '宋体', serif; /* 使用宋体字体 */
 }
 
 .value-cell {
-  font-family: 'SimSun', '宋体', serif;
+  /* 值单元格 - 定义值单元格的字体 */
+  font-family: 'SimSun', '宋体', serif; /* 使用宋体字体 */
 }
 
 .inspection-cell {
-  font-family: 'SimSun', '宋体', serif;
+  /* 检验单元格 - 定义检验单元格的字体 */
+  font-family: 'SimSun', '宋体', serif; /* 使用宋体字体 */
 }
 
 .inspection-cell .chinese-text {
-  font-size: 12pt;
-  font-family: 'SimSun', '宋体', serif;
-  line-height: 1.0;
+  /* 检验单元格中的中文文本 - 定义检验单元格中文本的样式 */
+  font-size: 12pt; /* 字体大小12pt */
+  font-family: 'SimSun', '宋体', serif; /* 使用宋体字体 */
+  line-height: 1.0; /* 行高1.0 */
 }
 
 .manufacturer-address-label .chinese-text {
-  font-size: 12pt;
-  font-family: 'SimSun', '宋体', serif;
+  /* 生产单位地址标签的中文文本 - 定义地址标签文本样式 */
+  font-size: 12pt; /* 字体大小12pt */
+  font-family: 'SimSun', '宋体', serif; /* 使用宋体字体 */
 }
 
 .manufacturer-address-value .chinese-text {
-  font-size: 18pt;
-  font-family: 'SimSun', '宋体', serif;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+  /* 生产单位地址值的中文文本 - 定义地址值文本样式 */
+  font-size: 18pt; /* 字体大小18pt，比普通文本大 */
+  font-family: 'SimSun', '宋体', serif; /* 使用宋体字体 */
+  justify-content: center; /* 垂直居中对齐 */
+  align-items: center; /* 水平居中对齐 */
+  text-align: center; /* 文本居中对齐 */
 }
 
 .manufacturer-address-value .english-text {
-  font-family: 'Times New Roman', serif;
-  font-size: 12pt;
-  line-height: 1.0;
-  margin: 0.15cm 0 0 0;
-  color: #000;
-  text-align: center;
+  /* 生产单位地址值的英文文本 - 定义地址值英文文本样式 */
+  font-family: 'Times New Roman', serif; /* 使用Times New Roman字体 */
+  font-size: 12pt; /* 字体大小12pt */
+  line-height: 1.0; /* 行高1.0 */
+  margin: 0.15cm 0 0 0; /* 顶部外边距0.15cm，其他方向0 */
+  color: #000; /* 黑色文本 */
+  text-align: center; /* 文本居中对齐 */
 }
 
 .cell-content {
-  padding: 0.2cm 0.3cm;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: left;
-  text-align: left;
+  /* 单元格内容 - 定义单元格内部内容的布局 */
+  padding: 0.2cm 0.3cm; /* 上下内边距0.2cm，左右内边距0.3cm */
+  height: 100%; /* 高度占满整个单元格 */
+  display: flex; /* 使用flex布局 */
+  flex-direction: column; /* 垂直方向排列 */
+  justify-content: center; /* 垂直居中对齐 */
+  align-items: left; /* 水平左对齐 */
+  text-align: left; /* 文本左对齐 */
 }
 .cell-content_text-top-align{
-  padding: 0.2cm 0.3cm;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: left;
-  text-align: left;
+  /* 顶部对齐的单元格内容 - 适用于需要特殊对齐的文本 */
+  padding: 0.2cm 0.3cm; /* 上下内边距0.2cm，左右内边距0.3cm */
+  display: flex; /* 使用flex布局 */
+  flex-direction: column; /* 垂直方向排列 */
+  justify-content: center; /* 垂直居中对齐 */
+  align-items: left; /* 水平左对齐 */
+  text-align: left; /* 文本左对齐 */
   white-space: pre-line !important; /* 保留换行符 */
-  overflow: hidden !important;
-  height: 1.58cm !important;
-  max-height: 1.58cm !important;
+  overflow: hidden !important; /* 隐藏溢出内容 */
 }
 
 .multi-line {
-  padding: 0.2cm 0.3cm;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: left;
-  text-align: left;
-  white-space: pre-line !important;
-  min-height: 1.58cm !important;
-  max-height: 1.58cm !important;
+  /* 多行文本 - 定义多行文本内容的布局 */
+  padding: 0.2cm 0.3cm; /* 上下内边距0.2cm，左右内边距0.3cm */
+  height: 100%; /* 高度占满整个单元格 */
+  display: flex; /* 使用flex布局 */
+  flex-direction: column; /* 垂直方向排列 */
+  justify-content: center; /* 垂直居中对齐 */
+  align-items: left; /* 水平左对齐 */
+  text-align: left; /* 文本左对齐 */
+  white-space: pre-line !important; /* 保留换行符，支持多行显示 */
 }
 
 .chinese-text {
-  font-family: 'SimSun', '宋体', serif;
-  font-size: 12pt;
-  line-height: 1.0;
-  margin: 0;
-  color: #000;
-  text-align: left;
-  padding: 0;
+  /* 中文文本 - 定义中文文本的基本样式 */
+  font-family: 'SimSun', '宋体', serif; /* 使用宋体字体 */
+  font-size: 12pt; /* 字体大小12pt */
+  line-height: 1.0; /* 行高1.0 */
+  margin: 0; /* 清除默认外边距 */
+  color: #000; /* 黑色文本 */
+  text-align: left; /* 文本左对齐 */
+  padding: 0; /* 清除默认内边距 */
   white-space: pre-line !important; /* 保留换行符 */
 }
 .chinese-text1 {
-  font-family: 'SimSun', '宋体', serif;
-  font-size: 12pt;
-  line-height: 1.0;
-  margin: 0;
-  color: #000;
-  text-align: left;
-  padding: 0;
+  /* 中文文本1 - 定义备注等多行文本的样式 */
+  font-family: 'SimSun', '宋体', serif; /* 使用宋体字体 */
+  font-size: 12pt; /* 字体大小12pt */
+  line-height: 1.0; /* 行高1.0 */
+  margin: 0; /* 清除默认外边距 */
+  color: #000; /* 黑色文本 */
+  text-align: left; /* 文本左对齐 */
+  padding: 0; /* 清除默认内边距 */
   white-space: pre-line !important; /* 保留换行符 */
-  overflow: hidden !important;
-  min-height: 2.37cm !important;
-  max-height: 2.37cm !important;
-
+  overflow: hidden !important; /* 隐藏溢出内容 */
+  min-height: 2.37cm !important; /* 最小高度2.37cm */
+  max-height: 2.37cm !important; /* 最大高度2.37cm */
 }
 .chinese-text2 {
-  font-family: 'SimSun', '宋体', serif;
-  font-size: 12pt;
-  line-height: 1.0;
-  margin: 0;
-  color: #000;
-  text-align: left;
-  padding: 0;
+  /* 中文文本2 - 定义发动机编号等特定字段的样式 */
+  font-family: 'SimSun', '宋体', serif; /* 使用宋体字体 */
+  font-size: 12pt; /* 字体大小12pt */
+  line-height: 1.0; /* 行高1.0 */
+  margin: 0; /* 清除默认外边距 */
+  color: #000; /* 黑色文本 */
+  text-align: left; /* 文本左对齐 */
+  padding: 0; /* 清除默认内边距 */
   white-space: pre-line !important; /* 保留换行符 */
 }
 .english-text {
-  font-family: 'Times New Roman', serif;
-  font-size: 12pt;
-  line-height: 1.0;
-  margin: 0;
-  color: #000;
-  text-align: left;
-  padding: 0;
+  /* 英文文本 - 定义英文文本的基本样式 */
+  font-family: 'Times New Roman', serif; /* 使用Times New Roman字体 */
+  font-size: 12pt; /* 字体大小12pt */
+  line-height: 1.0; /* 行高1.0 */
+  margin: 0; /* 清除默认外边距 */
+  color: #000; /* 黑色文本 */
+  text-align: left; /* 文本左对齐 */
+  padding: 0; /* 清除默认内边距 */
   white-space: pre-line !important; /* 保留换行符 */
 }
 
 @media print {
+  /* 打印样式 - 隐藏打印按钮 */
   .print-button {
-    display: none !important;
+    display: none !important; /* 打印时隐藏打印按钮 */
   }
 
+  /* 打印页面设置 - 定义A4纸张方向和边距 */
   @page {
-    size: A4 portrait !important;
-    margin: 0 !important;
-    padding: 0 !important;
+    size: A4 portrait !important; /* 设置A4纸张，纵向打印 */
+    margin: 0 !important; /* 清除默认页边距 */
   }
 
+  /* 打印时证书容器样式 - 调整容器布局 */
   .certificate-container {
-    margin: 0 !important;
-    padding: 0 !important;
-    width: 100% !important;
-    height: 100% !important;
-    display: block !important;
+    margin: 0 !important; /* 清除外边距 */
+    padding: 0 !important; /* 清除内边距 */
+    width: 100% !important; /* 宽度100% */
+    height: 100% !important; /* 高度100% */
+    display: block !important; /* 改为块级显示 */
   }
 
+  /* 打印时页面基础样式 - 设置body和html的边距和尺寸 */
   body, html {
-    margin: 0 !important;
-    padding: 0 !important;
-    width: 100% !important;
-    height: 100% !important;
+    margin: 0 !important; /* 清除外边距 */
+    padding: 0 !important; /* 清除内边距 */
+    width: 100% !important; /* 宽度100% */
+    height: 100% !important; /* 高度100% */
   }
 
+  /* 打印时证书表格样式 - 调整表格尺寸和边距 */
   .certificate-table {
-    width: 100% !important;
-    height: calc(297mm - 24.7mm - 10mm) !important;
-    margin: -0.5cm 0 0 0 !important;
-    border-collapse: collapse !important;
-    table-layout: fixed !important;
+    width: 100% !important; /* 宽度100% */
+    height: calc(297mm - 24.7mm - 10mm) !important; /* 高度计算：A4高度(297mm)减去顶部边距(24.7mm)和底部边距(10mm) */
+    margin: -0.5cm 0 0 0 !important; /* 顶部负外边距调整位置 */
+    border-collapse: collapse !important; /* 边框合并 */
+    table-layout: fixed !important; /* 固定列宽布局 */
   }
 
+  /* 打印时证书表格单元格样式 - 调整单元格样式 */
   .certificate-table td {
-    border: 0.18mm solid #000000 !important;
-    background-color: transparent !important;
-    vertical-align: middle !important;
-    text-align: center !important;
-    padding: 0 !important;
-    overflow: hidden !important;
-    font-size: 12pt !important;
-    line-height: 1.0 !important;
+    border: 0.18mm solid #000000 !important; /* 边框0.18mm，黑色 */
+    background-color: transparent !important; /* 背景透明 */
+    vertical-align: middle !important; /* 垂直居中对齐 */
+    text-align: center !important; /* 文本居中对齐 */
+    padding: 0 !important; /* 清除内边距 */
+    overflow: hidden !important; /* 隐藏溢出内容 */
+    font-size: 12pt !important; /* 字体大小12pt */
+    line-height: 1.0 !important; /* 行高1.0 */
   }
 
+  /* 打印时单元格类型样式 - 定义不同类型单元格的字体 */
   .label-cell, .value-cell, .inspection-cell {
-    font-family: 'SimSun', '宋体', serif !important;
+    font-family: 'SimSun', '宋体', serif !important; /* 使用宋体字体 */
   }
 
+  /* 打印时中文文本样式 - 调整中文文本样式 */
   .chinese-text {
-    font-family: 'SimSun', '宋体', serif !important;
-    font-size: 12pt !important;
-    line-height: 1.0 !important;
-    margin: 0 !important;
-    color: #000 !important;
-    text-align: left !important;
+    font-family: 'SimSun', '宋体', serif !important; /* 使用宋体字体 */
+    font-size: 12pt !important; /* 字体大小12pt */
+    line-height: 1.0 !important; /* 行高1.0 */
+    margin: 0 !important; /* 清除外边距 */
+    color: #000 !important; /* 黑色文本 */
+    text-align: left !important; /* 文本左对齐 */
   }
 
+  /* 打印时英文文本样式 - 调整英文文本样式 */
   .english-text {
-    font-family: 'Times New Roman', serif !important;
-    font-size: 12pt !important;
-    line-height: 1.0 !important;
-    margin: 0.15cm 0 0 0 !important;
-    color: #000 !important;
-    text-align: left !important;
+    font-family: 'Times New Roman', serif !important; /* 使用Times New Roman字体 */
+    font-size: 12pt !important; /* 字体大小12pt */
+    line-height: 1.0 !important; /* 行高1.0 */
+    margin: 0.15cm 0 0 0 !important; /* 顶部外边距0.15cm，其他方向0 */
+    color: #000 !important; /* 黑色文本 */
+    text-align: left !important; /* 文本左对齐 */
   }
 
+  /* 打印时生产单位地址值的中文文本样式 - 调整地址中文文本样式 */
   .manufacturer-address-value .chinese-text {
-    font-size: 18pt !important;
-    text-align: center !important;
+    font-size: 18pt !important; /* 字体大小18pt，比普通文本大 */
+    text-align: center !important; /* 文本居中对齐 */
   }
 
   .manufacturer-address-value .english-text {
