@@ -464,18 +464,8 @@ onMounted(async () => {
   box-sizing: border-box; /* 确保边框和内边距不影响高度 */
 }
 
-.label-cell {
-  /* 标签单元格 - 定义标签列的字体 */
-  font-family: 'SimSun', '宋体', serif; /* 使用宋体字体 */
-}
-
-.value-cell {
-  /* 值单元格 - 定义值列的字体 */
-  font-family: 'SimSun', '宋体', serif; /* 使用宋体字体 */
-}
-
-.inspection-cell {
-  /* 检验结论单元格 - 定义检验结论列的字体 */
+.label-cell, .value-cell, .inspection-cell {
+  /* 单元格类型 - 定义不同类型单元格的字体 */
   font-family: 'SimSun', '宋体', serif; /* 使用宋体字体 */
 }
 
@@ -549,33 +539,8 @@ onMounted(async () => {
   white-space: pre-line !important; /* 保留换行符，支持多行显示 */
 }
 
-.chinese-text {
-  /* 中文文本 - 定义中文文本的基本样式 */
-  font-family: 'SimSun', '宋体', serif; /* 使用宋体字体 */
-  font-size: 12pt; /* 字体大小12pt */
-  line-height: 1.0; /* 行高1.0 */
-  margin: 0; /* 清除默认外边距 */
-  color: #000; /* 黑色文本 */
-  text-align: left; /* 文本左对齐 */
-  padding: 0; /* 清除默认内边距 */
-  white-space: pre-line !important; /* 保留换行符 */
-}
-.chinese-text1 {
-  /* 中文文本1 - 定义备注等多行文本的样式 */
-  font-family: 'SimSun', '宋体', serif; /* 使用宋体字体 */
-  font-size: 12pt; /* 字体大小12pt */
-  line-height: 1.2; /* 行高1.2，提高可读性 */
-  margin: 0; /* 清除默认外边距 */
-  color: #000; /* 黑色文本 */
-  text-align: left; /* 文本左对齐 */
-  padding: 0; /* 清除默认内边距 */
-  white-space: pre-line !important; /* 保留换行符 */
-  overflow: hidden !important; /* 隐藏溢出内容 */
-  min-height: 2.37cm !important; /* 最小高度2.37cm */
-  max-height: 2.37cm !important; /* 最大高度2.37cm */
-}
-.chinese-text2 {
-  /* 中文文本2 - 定义发动机编号等特定字段的样式 */
+.chinese-text, .chinese-text1, .chinese-text2 {
+  /* 中文文本基础样式 - 定义所有中文文本的公共样式 */
   font-family: 'SimSun', '宋体', serif; /* 使用宋体字体 */
   font-size: 12pt; /* 字体大小12pt */
   line-height: 1.0; /* 行高1.0 */
@@ -585,6 +550,14 @@ onMounted(async () => {
   padding: 0; /* 清除默认内边距 */
   white-space: pre-line !important; /* 保留换行符 */
   overflow: hidden; /* 隐藏溢出内容 */
+}
+
+.chinese-text1 {
+  /* 中文文本1 - 定义备注等多行文本的样式 */
+  line-height: 1.2; /* 行高1.2，提高可读性 */
+  overflow: hidden !important; /* 隐藏溢出内容 */
+  min-height: 2.37cm !important; /* 最小高度2.37cm */
+  max-height: 2.37cm !important; /* 最大高度2.37cm */
 }
 .english-text {
   /* 英文文本 - 定义英文文本的基本样式 */

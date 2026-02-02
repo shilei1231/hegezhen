@@ -309,9 +309,11 @@ const getCertificateDetail = async (id) => {
 
 
 const getCellStyle = (heightCm = 2.0) => {
+  // 直接使用厘米单位，同时设置height、minHeight和maxHeight确保行高完全固定
   return {
     height: `${heightCm}cm`,
-    minHeight: `${heightCm}cm`
+    minHeight: `${heightCm}cm`,
+    maxHeight: `${heightCm}cm`
   }
 }
 
@@ -514,18 +516,8 @@ onMounted(async () => {
   height: auto; /* 高度自适应 */
 }
 
-.label-cell {
-  /* 标签单元格 - 定义标签单元格的字体 */
-  font-family: 'SimSun', '宋体', serif; /* 使用宋体字体 */
-}
-
-.value-cell {
-  /* 值单元格 - 定义值单元格的字体 */
-  font-family: 'SimSun', '宋体', serif; /* 使用宋体字体 */
-}
-
-.inspection-cell {
-  /* 检验单元格 - 定义检验单元格的字体 */
+.label-cell, .value-cell, .inspection-cell {
+  /* 单元格类型 - 定义不同类型单元格的字体 */
   font-family: 'SimSun', '宋体', serif; /* 使用宋体字体 */
 }
 
@@ -570,6 +562,7 @@ onMounted(async () => {
   justify-content: center; /* 垂直居中对齐 */
   align-items: left; /* 水平左对齐 */
   text-align: left; /* 文本左对齐 */
+  overflow: hidden !important; /* 隐藏溢出内容，确保不影响行高 */
 }
 .cell-content_text-top-align{
   /* 顶部对齐的单元格内容 - 适用于需要特殊对齐的文本 */
@@ -583,6 +576,7 @@ onMounted(async () => {
   overflow: hidden !important; /* 隐藏溢出内容 */
 }
 
+
 .multi-line {
   /* 多行文本 - 定义多行文本内容的布局 */
   padding: 0.2cm 0.3cm; /* 上下内边距0.2cm，左右内边距0.3cm */
@@ -593,10 +587,11 @@ onMounted(async () => {
   align-items: left; /* 水平左对齐 */
   text-align: left; /* 文本左对齐 */
   white-space: pre-line !important; /* 保留换行符，支持多行显示 */
+  overflow: hidden !important; /* 隐藏溢出内容，确保不影响行高 */
 }
 
-.chinese-text {
-  /* 中文文本 - 定义中文文本的基本样式 */
+.chinese-text, .chinese-text1, .chinese-text2 {
+  /* 中文文本基础样式 - 定义所有中文文本的公共样式 */
   font-family: 'SimSun', '宋体', serif; /* 使用宋体字体 */
   font-size: 12pt; /* 字体大小12pt */
   line-height: 1.0; /* 行高1.0 */
@@ -606,30 +601,12 @@ onMounted(async () => {
   padding: 0; /* 清除默认内边距 */
   white-space: pre-line !important; /* 保留换行符 */
 }
+
 .chinese-text1 {
   /* 中文文本1 - 定义备注等多行文本的样式 */
-  font-family: 'SimSun', '宋体', serif; /* 使用宋体字体 */
-  font-size: 12pt; /* 字体大小12pt */
-  line-height: 1.0; /* 行高1.0 */
-  margin: 0; /* 清除默认外边距 */
-  color: #000; /* 黑色文本 */
-  text-align: left; /* 文本左对齐 */
-  padding: 0; /* 清除默认内边距 */
-  white-space: pre-line !important; /* 保留换行符 */
   overflow: hidden !important; /* 隐藏溢出内容 */
   min-height: 2.37cm !important; /* 最小高度2.37cm */
   max-height: 2.37cm !important; /* 最大高度2.37cm */
-}
-.chinese-text2 {
-  /* 中文文本2 - 定义发动机编号等特定字段的样式 */
-  font-family: 'SimSun', '宋体', serif; /* 使用宋体字体 */
-  font-size: 12pt; /* 字体大小12pt */
-  line-height: 1.0; /* 行高1.0 */
-  margin: 0; /* 清除默认外边距 */
-  color: #000; /* 黑色文本 */
-  text-align: left; /* 文本左对齐 */
-  padding: 0; /* 清除默认内边距 */
-  white-space: pre-line !important; /* 保留换行符 */
 }
 .english-text {
   /* 英文文本 - 定义英文文本的基本样式 */
