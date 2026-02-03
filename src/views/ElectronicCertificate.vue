@@ -69,9 +69,9 @@
               <div class="english-text">Engine No.</div>
             </div>
           </td>
-          <td class="value-cell" colspan="6">
-            <div class="cell-content multi-line">
-            <div class="chinese-text2">{{ certificateData.ENGINE_NO}}</div></div>
+          <td class="value-cell" colspan="6" :style="getCellStyle(1.58)">
+            <div class="cell-content" style="height: 100%; overflow: hidden; display: flex; align-items: center;">
+            <div class="chinese-text2" style="line-height: 0.526cm; max-height: 1.58cm; overflow: hidden; white-space: pre-line; width: 100%;">{{ certificateData.ENGINE_NO}}</div></div>
           </td>
           <td class="label-cell" colspan="6">
             <div class="cell-content multi-line">
@@ -79,9 +79,9 @@
               <div class="english-text">Chassis No.</div>
             </div>
           </td>
-          <td class="value-cell" colspan="6">
-            <div class="cell-content multi-line">
-            <div class="chinese-text2">{{ certificateData.CHASSIS_NO}}</div></div>
+          <td class="value-cell" colspan="6" :style="getCellStyle(1.58)">
+            <div class="cell-content" style="height: 100%; overflow: hidden; display: flex; align-items: center;">
+            <div class="chinese-text2" style="line-height: 0.526cm; max-height: 1.58cm; overflow: hidden; white-space: pre-line; width: 100%;">{{ certificateData.CHASSIS_NO}}</div></div>
           </td>
         </tr>
 
@@ -237,9 +237,9 @@
               <div class="english-text">Remark</div>
             </div>
           </td>
-          <td class="value-cell" colspan="21">
-            <div class="cell-content multi-line">
-              <div class="chinese-text1">{{ certificateData.REMARK}}</div>
+          <td class="value-cell" colspan="21" :style="getCellStyle(2.37)">
+            <div class="cell-content" style="height: 100%; overflow: hidden; display: flex; align-items: center;">
+            <div class="chinese-text2" style="line-height: 0.5925cm; max-height: 2.37cm; overflow: hidden; white-space: pre-line; width: 100%;">{{ certificateData.REMARK}}</div>
             </div>
           </td>
         </tr>
@@ -308,7 +308,7 @@ const getCertificateDetail = async (id) => {
 
 
 
-const getCellStyle = (heightCm = 2.0) => {
+const getCellStyle = (heightCm = 1.58) => {
   // 直接使用厘米单位，同时设置height、minHeight和maxHeight确保行高完全固定
   return {
     height: `${heightCm}cm`,
@@ -446,13 +446,12 @@ onMounted(async () => {
 
 .certificate-container {
   /* 证书容器 - 占满整个宽度，使用flex布局垂直居中 */
-  width: 100%; /* 宽度100% */
-  min-height: 100%; /* 最小高度100% */
-  box-sizing: border-box; /* 盒模型设置为border-box */
-  display: flex; /* 使用flex布局 */
-  flex-direction: column; /* 垂直方向排列 */
-  align-items: center; /* 水平居中对齐 */
-  margin-left: 50px; /* 左侧外边距50px */
+  width: 100%;
+  min-height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .certificate-wrapper {
@@ -495,12 +494,11 @@ onMounted(async () => {
 }
 
 .certificate-table {
-  /* 证书表格 - 定义证书主体表格的样式 */
-  width: 17cm; /* 表格宽度17cm */
-  height: 26.3cm; /* 表格高度26.3cm */
-  border-collapse: collapse; /* 边框合并 */
-  table-layout: fixed; /* 固定列宽布局 */
-  margin-left: 50px; /* 左侧外边距50px */
+  /* 证书表格 - 设置固定宽度和高度，使用固定布局 */
+  width: 17cm; /* 表格宽度 */
+  height: 26.3cm; /* 表格总高度 */
+  border-collapse: collapse; /* 合并边框 */
+  table-layout: fixed; /* 使用固定布局，确保列宽一致 */
 }
 
 .certificate-table td {
@@ -510,10 +508,10 @@ onMounted(async () => {
   vertical-align: middle; /* 垂直居中对齐 */
   text-align: center; /* 文本居中对齐 */
   padding: 0; /* 清除默认内边距 */
-  overflow: hidden; /* 隐藏溢出内容 */
+  overflow: hidden !important; /* 隐藏溢出内容，确保不影响行高 */
   font-size: 12pt; /* 字体大小12pt */
   line-height: 1.0; /* 行高1.0 */
-  height: auto; /* 高度自适应 */
+  box-sizing: border-box; /* 确保边框和内边距不影响高度 */
 }
 
 .label-cell, .value-cell, .inspection-cell {
@@ -563,17 +561,19 @@ onMounted(async () => {
   align-items: left; /* 水平左对齐 */
   text-align: left; /* 文本左对齐 */
   overflow: hidden !important; /* 隐藏溢出内容，确保不影响行高 */
+  white-space: normal; /* 允许文本换行，但保持在固定高度内 */
 }
 .cell-content_text-top-align{
-  /* 顶部对齐的单元格内容 - 适用于需要特殊对齐的文本 */
-  padding: 0.2cm 0.3cm; /* 上下内边距0.2cm，左右内边距0.3cm */
+  /* 顶部对齐的单元格内容 - 适用于单行文本，设置最小/最大高度 */
+  padding: 0cm 0.3cm; /* 上下内边距0.2cm，左右内边距0.3cm */
   display: flex; /* 使用flex布局 */
   flex-direction: column; /* 垂直方向排列 */
   justify-content: center; /* 垂直居中对齐 */
   align-items: left; /* 水平左对齐 */
   text-align: left; /* 文本左对齐 */
-  white-space: pre-line !important; /* 保留换行符 */
-  overflow: hidden !important; /* 隐藏溢出内容 */
+
+  min-height: 1.58cm !important; /* 最小高度1.58cm */
+  max-height: 1.58cm !important; /* 最大高度1.58cm */
 }
 
 
@@ -583,11 +583,11 @@ onMounted(async () => {
   height: 100%; /* 高度占满整个单元格 */
   display: flex; /* 使用flex布局 */
   flex-direction: column; /* 垂直方向排列 */
+  overflow: hidden !important; /* 隐藏溢出内容，确保不影响行高 */
   justify-content: center; /* 垂直居中对齐 */
   align-items: left; /* 水平左对齐 */
   text-align: left; /* 文本左对齐 */
   white-space: pre-line !important; /* 保留换行符，支持多行显示 */
-  overflow: hidden !important; /* 隐藏溢出内容，确保不影响行高 */
 }
 
 .chinese-text, .chinese-text1, .chinese-text2 {
@@ -600,13 +600,36 @@ onMounted(async () => {
   text-align: left; /* 文本左对齐 */
   padding: 0; /* 清除默认内边距 */
   white-space: pre-line !important; /* 保留换行符 */
+  overflow: hidden; /* 隐藏溢出内容 */
 }
 
 .chinese-text1 {
   /* 中文文本1 - 定义备注等多行文本的样式 */
+  line-height: 1.2; /* 行高1.2，提高可读性 */
   overflow: hidden !important; /* 隐藏溢出内容 */
   min-height: 2.37cm !important; /* 最小高度2.37cm */
   max-height: 2.37cm !important; /* 最大高度2.37cm */
+}
+
+.fixed-height-multi-line {
+  /* 固定高度的多行文本 - 确保无论内容多少都保持固定行高 */
+  height: 100% !important;
+  min-height: 100% !important;
+  max-height: 100% !important;
+  overflow: hidden !important;
+  display: block;
+  white-space: pre-line !important;
+  line-height: 1.0;
+}
+
+.fixed-height-multi-line > * {
+  /* 固定高度多行文本的子元素样式 - 确保内部元素也不会影响高度 */
+  height: 100% !important;
+  min-height: 100% !important;
+  max-height: 100% !important;
+  overflow: hidden !important;
+  display: block;
+  line-height: 1.0;
 }
 .english-text {
   /* 英文文本 - 定义英文文本的基本样式 */

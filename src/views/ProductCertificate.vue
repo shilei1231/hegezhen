@@ -1,8 +1,8 @@
 <template>
   <div class="certificate-container">
     <button class="print-button" @click="printCertificate">
-    <i class="fas fa-print"></i> 打印
-  </button>
+      <i class="fas fa-print"></i> 打印
+    </button>
 
     <div v-for="(cert, index) in certificateData" :key="index" class="certificate-wrapper">
       <table class="certificate-table">
@@ -15,7 +15,9 @@
             </div>
           </td>
           <td class="value-cell" colspan="12" :style="getCellStyle(1.58)">
-            <div class="cell-content"><div class="english-text">{{ cert.CERTIFICATE_NO }}</div></div>
+            <div class="cell-content">
+              <div class="english-text">{{ cert.CERTIFICATE_NO }}</div>
+            </div>
           </td>
         </tr>
 
@@ -28,8 +30,8 @@
           </td>
           <td class="value-cell" colspan="18" :style="getCellStyle(1.58)">
             <div class="cell-content multi-line">
-              <div class="chinese-text">{{ cert.PRODUCT_NAME}}</div>
-              <div class="english-text">{{ cert.PRODUCT_NAME_U}}</div>
+              <div class="chinese-text">{{ cert.PRODUCT_NAME }}</div>
+              <div class="english-text">{{ cert.PRODUCT_NAME_U }}</div>
             </div>
           </td>
         </tr>
@@ -42,7 +44,9 @@
             </div>
           </td>
           <td class="value-cell" colspan="18" :style="getCellStyle(1.58)">
-            <div class="cell-content"><div class="english-text">{{ cert.PRODUCT_MODEL}}</div></div>
+            <div class="cell-content">
+              <div class="english-text">{{ cert.PRODUCT_MODEL }}</div>
+            </div>
           </td>
         </tr>
 
@@ -54,7 +58,9 @@
             </div>
           </td>
           <td class="value-cell" colspan="18" :style="getCellStyle(1.58)">
-            <div class="cell-content"><div class="english-text">{{ cert.PIN }}</div></div>
+            <div class="cell-content">
+              <div class="english-text">{{ cert.PIN }}</div>
+            </div>
           </td>
         </tr>
 
@@ -66,8 +72,9 @@
             </div>
           </td>
           <td class="value-cell" colspan="6" :style="getCellStyle(1.58)">
-            <div class="cell-content multi-line">
-            <div class="chinese-text2">{{ cert.ENGINE_NO}}</div></div>
+
+                          <div class="chinese-text2" style="margin-left: 0.3cm; /* 文本左对齐 */line-height: 0.79cm; max-height: 1.58cm; overflow: hidden !important; white-space: pre-line; width: 100%;">{{ cert.ENGINE_NO}}</div>
+
           </td>
           <td class="label-cell" colspan="6" :style="getCellStyle(1.58)">
             <div class="cell-content">
@@ -76,8 +83,9 @@
             </div>
           </td>
           <td class="value-cell" colspan="6" :style="getCellStyle(1.58)">
-            <div class="cell-content multi-line">
-            <div class="chinese-text2                                                                                                                                                                                                                                                                         ">{{ cert.CHASSIS_NO}}</div></div>
+
+                          <div class="chinese-text2" style="margin-left: 0.3cm; /* 文本左对齐 */line-height: 0.79cm; max-height: 1.58cm; overflow: hidden !important; white-space: pre-line; width: 100%;">{{ cert.CHASSIS_NO}}</div>
+
           </td>
         </tr>
 
@@ -89,7 +97,9 @@
               </div>
               <div class="english-text">
                 <div>This is to certify the product has undergone inspection and has been found to conform to</div>
-                <div>{{ cert.INSPECTION_CERTIFICATION }} standard, as such it has been granted factory dispatch approval.</div>
+                <div>{{ cert.INSPECTION_CERTIFICATION }} standard, as such it has been granted factory dispatch
+                  approval.
+                </div>
               </div>
             </div>
           </td>
@@ -175,7 +185,7 @@
           <td class="value-cell manufacturer-address-value" colspan="18" :style="getCellStyle(2.37)">
             <div class="cell-content multi-line">
               <div class="chinese-text">{{ cert.MANUFACTURER_NAME }}</div>
-              <div class="english-text">{{ cert.MANUFACTURER_NAME_U}}</div>
+              <div class="english-text">{{ cert.MANUFACTURER_NAME_U }}</div>
             </div>
           </td>
         </tr>
@@ -190,8 +200,8 @@
           </td>
           <td class="value-cell" colspan="18" :style="getCellStyle(2.37)">
             <div class="cell-content multi-line">
-              <div class="chinese-text">{{ cert.MANUFACTURER_ADDRESS}}</div>
-              <div class="english-text">{{ cert.MANUFACTURER_ADDRESS_U}}</div>
+              <div class="chinese-text">{{ cert.MANUFACTURER_ADDRESS }}</div>
+              <div class="english-text">{{ cert.MANUFACTURER_ADDRESS_U }}</div>
             </div>
           </td>
         </tr>
@@ -234,9 +244,12 @@
             </div>
           </td>
           <td class="value-cell" colspan="21" :style="getCellStyle(2.37)">
-            <div class="cell-content multi-line">
-              <div class="chinese-text1">{{ cert.REMARK}}</div>
-            </div>
+
+              <div
+                   style=" text-align: left; margin-left: 0.3cm; /* 文本左对齐 */;line-height: 0.79cm; max-height: 2.37cm; overflow: hidden !important; white-space: pre-line; width: 100%;">
+                {{ cert.REMARK }}
+              </div>
+
           </td>
         </tr>
         </tbody>
@@ -246,8 +259,8 @@
 </template>
 
 <script setup>
-import { ref, onMounted, watch } from 'vue'
-import { certificateApi } from '../services/certificateApi'
+import {ref, onMounted, watch} from 'vue'
+import {certificateApi} from '../services/certificateApi'
 
 // 日期格式化函数
 const formatDateCN = (date) => {
@@ -296,7 +309,7 @@ watch(() => props.data, (newData) => {
       certificateData.value = [newData];
     }
   }
-}, { deep: true, immediate: true })
+}, {deep: true, immediate: true})
 
 const getCertificateDetail = async (id) => {
   const res = await certificateApi.getCertificateDetail(id)
@@ -324,7 +337,9 @@ const getCellStyle = (heightCm = 1.58) => {
   return {
     height: `${heightCm}cm`,
     minHeight: `${heightCm}cm`,
-    maxHeight: `${heightCm}cm`
+    maxHeight: `${heightCm}cm`,
+    position: 'relative',
+    overflow: 'hidden !important'
   }
 }
 
@@ -333,7 +348,7 @@ function getURLParameters(url) {
   var paramString = url.split('?')[1];
   if (paramString) {
     var paramPairs = paramString.split('&');
-    paramPairs.forEach(function(pair) {
+    paramPairs.forEach(function (pair) {
       var keyValue = pair.split('=');
       var key = decodeURIComponent(keyValue[0]);
       var value = decodeURIComponent(keyValue[1]) || true;
@@ -505,42 +520,49 @@ onMounted(async () => {
   /* 单元格内容 - 定义单元格内部内容的布局 */
   padding: 0.2cm 0.3cm; /* 上下内边距0.2cm，左右内边距0.3cm */
   height: 100%; /* 高度占满整个单元格 */
-  display: flex; /* 使用flex布局 */
-  flex-direction: column; /* 垂直方向排列 */
-  justify-content: center; /* 垂直居中对齐 */
-  align-items: left; /* 水平左对齐 */
-  text-align: left; /* 文本左对齐 */
+  position: relative; /* 设置相对定位，作为绝对定位的父容器 */
   overflow: hidden !important; /* 隐藏溢出内容，确保不影响行高 */
   white-space: normal; /* 允许文本换行，但保持在固定高度内 */
 }
-.cell-content_text-top-align{
+
+.cell-content_text-top-align {
   /* 顶部对齐的单元格内容 - 适用于单行文本，设置最小/最大高度 */
   padding: 0cm 0.3cm; /* 上下内边距0.2cm，左右内边距0.3cm */
-  display: flex; /* 使用flex布局 */
-  flex-direction: column; /* 垂直方向排列 */
-  justify-content: center; /* 垂直居中对齐 */
-  align-items: left; /* 水平左对齐 */
-  text-align: left; /* 文本左对齐 */
-
+  position: relative; /* 设置相对定位，作为绝对定位的父容器 */
   min-height: 1.58cm !important; /* 最小高度1.58cm */
   max-height: 1.58cm !important; /* 最大高度1.58cm */
+  text-align: left; /* 文本左对齐 */
 }
 
 .multi-line {
   /* 多行文本 - 定义多行文本内容的布局 */
   padding: 0.2cm 0.3cm; /* 上下内边距0.2cm，左右内边距0.3cm */
   height: 100%; /* 高度占满整个单元格 */
-  display: flex; /* 使用flex布局 */
-  flex-direction: column; /* 垂直方向排列 */
+  position: relative; /* 设置相对定位，作为绝对定位的父容器 */
   overflow: hidden !important; /* 隐藏溢出内容，确保不影响行高 */
-  justify-content: center; /* 垂直居中对齐 */
-  align-items: left; /* 水平左对齐 */
   text-align: left; /* 文本左对齐 */
   white-space: pre-line !important; /* 保留换行符，支持多行显示 */
 }
 
-.chinese-text, .chinese-text1, .chinese-text2 {
+.chinese-text, .chinese-text1 {
   /* 中文文本基础样式 - 定义所有中文文本的公共样式 */
+  font-family: 'SimSun', '宋体', serif; /* 使用宋体字体 */
+  font-size: 12pt; /* 字体大小12pt */
+  line-height: 1.0; /* 行高1.0 */
+  margin: 0; /* 清除默认外边距 */
+  color: #000; /* 黑色文本 */
+  text-align: left; /* 文本左对齐 */
+  padding: 0; /* 清除默认内边距 */
+  white-space: pre-line !important; /* 保留换行符 */
+  overflow: hidden; /* 隐藏溢出内容 */
+  position: absolute; /* 设置绝对定位 */
+  top: 50%; /* 垂直居中 */
+  transform: translateY(-50%); /* 垂直居中 */
+  width: calc(100% - 0.6cm); /* 减去左右内边距 */
+}
+
+.chinese-text2 {
+  /* 中文文本2 - 发动机编号和底盘编号的样式保持不变 */
   font-family: 'SimSun', '宋体', serif; /* 使用宋体字体 */
   font-size: 12pt; /* 字体大小12pt */
   line-height: 1.0; /* 行高1.0 */
@@ -559,16 +581,43 @@ onMounted(async () => {
   min-height: 2.37cm !important; /* 最小高度2.37cm */
   max-height: 2.37cm !important; /* 最大高度2.37cm */
 }
+
+.fixed-height-multi-line {
+  /* 固定高度的多行文本 - 确保无论内容多少都保持固定行高 */
+  height: 100% !important;
+  min-height: 100% !important;
+  max-height: 100% !important;
+  overflow: hidden !important;
+  display: block;
+  white-space: pre-line !important;
+  line-height: 1.0;
+}
+
+.fixed-height-multi-line > * {
+  /* 固定高度多行文本的子元素样式 - 确保内部元素也不会影响高度 */
+  height: 100% !important;
+  min-height: 100% !important;
+  max-height: 100% !important;
+  overflow: hidden !important;
+  display: block;
+  line-height: 1.0;
+}
+
 .english-text {
   /* 英文文本 - 定义英文文本的基本样式 */
   font-family: 'Times New Roman', serif; /* 使用Times New Roman字体 */
   font-size: 12pt; /* 字体大小12pt */
   line-height: 1.0; /* 行高1.0 */
-  margin: 0; /* 清除默认外边距 */
+  margin: 0.15cm 0 0 0; /* 清除默认外边距 */
   color: #000; /* 黑色文本 */
   text-align: left; /* 文本左对齐 */
   padding: 0; /* 清除默认内边距 */
   white-space: pre-line; /* 保留换行符 */
+  position: absolute; /* 设置绝对定位 */
+  top: 50%; /* 垂直居中 */
+  transform: translateY(-50%); /* 垂直居中 */
+  width: calc(100% - 0.6cm); /* 减去左右内边距 */
+  margin-top: 0.5cm; /* 与中文文本保持间距 */
 }
 
 @media print {
