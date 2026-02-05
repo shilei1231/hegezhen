@@ -520,49 +520,44 @@ onMounted(async () => {
   /* 单元格内容 - 定义单元格内部内容的布局 */
   padding: 0.2cm 0.3cm; /* 上下内边距0.2cm，左右内边距0.3cm */
   height: 100%; /* 高度占满整个单元格 */
-  position: relative; /* 设置相对定位，作为绝对定位的父容器 */
+  display: flex; /* 使用flex布局 */
+  flex-direction: column; /* 垂直方向排列 */
+  justify-content: center; /* 垂直居中对齐 */
+  align-items: left; /* 水平左对齐 */
+  text-align: left; /* 文本左对齐 */
   overflow: hidden !important; /* 隐藏溢出内容，确保不影响行高 */
   white-space: normal; /* 允许文本换行，但保持在固定高度内 */
+
 }
 
 .cell-content_text-top-align {
   /* 顶部对齐的单元格内容 - 适用于单行文本，设置最小/最大高度 */
   padding: 0cm 0.3cm; /* 上下内边距0.2cm，左右内边距0.3cm */
-  position: relative; /* 设置相对定位，作为绝对定位的父容器 */
+  display: flex; /* 使用flex布局 */
+  flex-direction: column; /* 垂直方向排列 */
+  justify-content: center; /* 垂直居中对齐 */
+  align-items: left; /* 水平左对齐 */
+  text-align: left; /* 文本左对齐 */
+
   min-height: 1.58cm !important; /* 最小高度1.58cm */
   max-height: 1.58cm !important; /* 最大高度1.58cm */
-  text-align: left; /* 文本左对齐 */
 }
 
 .multi-line {
   /* 多行文本 - 定义多行文本内容的布局 */
   padding: 0.2cm 0.3cm; /* 上下内边距0.2cm，左右内边距0.3cm */
   height: 100%; /* 高度占满整个单元格 */
-  position: relative; /* 设置相对定位，作为绝对定位的父容器 */
+  display: flex; /* 使用flex布局 */
+  flex-direction: column; /* 垂直方向排列 */
   overflow: hidden !important; /* 隐藏溢出内容，确保不影响行高 */
+  justify-content: center; /* 垂直居中对齐 */
+  align-items: left; /* 水平左对齐 */
   text-align: left; /* 文本左对齐 */
   white-space: pre-line !important; /* 保留换行符，支持多行显示 */
 }
 
-.chinese-text, .chinese-text1 {
+.chinese-text, .chinese-text1, .chinese-text2 {
   /* 中文文本基础样式 - 定义所有中文文本的公共样式 */
-  font-family: 'SimSun', '宋体', serif; /* 使用宋体字体 */
-  font-size: 12pt; /* 字体大小12pt */
-  line-height: 1.0; /* 行高1.0 */
-  margin: 0; /* 清除默认外边距 */
-  color: #000; /* 黑色文本 */
-  text-align: left; /* 文本左对齐 */
-  padding: 0; /* 清除默认内边距 */
-  white-space: pre-line !important; /* 保留换行符 */
-  overflow: hidden; /* 隐藏溢出内容 */
-  position: absolute; /* 设置绝对定位 */
-  top: 50%; /* 垂直居中 */
-  transform: translateY(-50%); /* 垂直居中 */
-  width: calc(100% - 0.6cm); /* 减去左右内边距 */
-}
-
-.chinese-text2 {
-  /* 中文文本2 - 发动机编号和底盘编号的样式保持不变 */
   font-family: 'SimSun', '宋体', serif; /* 使用宋体字体 */
   font-size: 12pt; /* 字体大小12pt */
   line-height: 1.0; /* 行高1.0 */
@@ -608,16 +603,11 @@ onMounted(async () => {
   font-family: 'Times New Roman', serif; /* 使用Times New Roman字体 */
   font-size: 12pt; /* 字体大小12pt */
   line-height: 1.0; /* 行高1.0 */
-  margin: 0.15cm 0 0 0; /* 清除默认外边距 */
+  margin: 0; /* 清除默认外边距 */
   color: #000; /* 黑色文本 */
   text-align: left; /* 文本左对齐 */
   padding: 0; /* 清除默认内边距 */
   white-space: pre-line; /* 保留换行符 */
-  position: absolute; /* 设置绝对定位 */
-  top: 50%; /* 垂直居中 */
-  transform: translateY(-50%); /* 垂直居中 */
-  width: calc(100% - 0.6cm); /* 减去左右内边距 */
-  margin-top: 0.5cm; /* 与中文文本保持间距 */
 }
 
 @media print {
